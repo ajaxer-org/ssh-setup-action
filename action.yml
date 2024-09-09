@@ -1,6 +1,8 @@
-name: 'Setup SSH'
-description: 'Set up SSH for GitHub Actions with configurable host and key file'
-
+name: 'Setup SSH key'
+description: 'Set up SSH private for GitHub Actions with configurable host and key file'
+branding:
+  icon: 'terminal'
+  color: 'red'
 
 inputs:
   # Input for the SSH private key
