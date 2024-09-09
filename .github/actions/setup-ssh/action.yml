@@ -1,0 +1,40 @@
+name: 'Setup SSH'
+description: 'Set up SSH for GitHub Actions with configurable host and key file'
+
+
+inputs:
+  # Input for the SSH private key
+  ssh-private-key:
+    description: 'The SSH private key'
+    required: true
+
+  # Input for the SSH host (default: github.com)
+  host:
+    description: 'The SSH host to scan for keys'
+    required: true
+    default: 'github.com'
+
+  # Input for the SSH key filename (default: id_ed25519)
+  ssh-key-filename:
+    description: 'The SSH private key filename'
+    required: true
+    default: 'id_ed25519'
+
+
+runs:
+  using: 'composite'  # Using composite actions allows multiple steps in a single action
+  steps:
+    - name: Set up SSH
+      shell: bash  # Specifying the shell to use (bash in this case)
+      run: |
+        # Create the .ssh directory if it doesn't exist
+        mkdir -p ~/.ssh
+
+        # Write the SSH private key to a file (filename is configurable by user)
+        echo "${{ inputs.ssh-private-key }}" > ~/.ssh/${{ inputs.ssh-key-filename }}
+
+        # Set proper permissions for the private key file
+        chmod 600 ~/.ssh/${{ inputs.ssh-key-filename }}
+
+        # Add the host's SSH key to the known hosts file to prevent host authenticity checks
+        ssh-keyscan ${{ inputs.host }} >> ~/.ssh/known_hosts
