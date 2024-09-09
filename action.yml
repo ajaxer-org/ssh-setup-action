@@ -1,4 +1,4 @@
-name: 'Setup SSH key'
+name: 'AO Setup SSH key'
 description: 'Set up SSH private for GitHub Actions with configurable host and key file'
 branding:
   icon: 'terminal'
