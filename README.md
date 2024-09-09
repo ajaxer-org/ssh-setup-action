@@ -12,6 +12,7 @@ uses: ajaxer-org/ssh-setup-action@v1
 with:
   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
   host: github.com
+  ssh-key-filename: id_rsa  # Can customize the key file name if needed
 ```
 
 ### Example
@@ -32,8 +33,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up SSH
-        uses: ajaxer-org/ssh-setup-action@v1
+        uses: <your-username>/actions/.github/actions/setup-ssh@v1
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: github.com  # Specify the host here
+          host: github.com
+          ssh-key-filename: id_rsa  # Can customize the key file name if needed
 ```
