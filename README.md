@@ -8,10 +8,10 @@ This GitHub Action sets up SSH for use in GitHub Actions workflows.
 ### Usage
 
 ```yaml
-uses: ajaxer-org/ssh-setup-action@v1
+uses: ajaxer-org/ssh-setup-action@latest
 with:
   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-  host: github.com
+  host: github.
   ssh-key-filename: id_rsa  # Can customize the key file name if needed
 ```
 
@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Set up SSH
-        uses: <your-username>/actions/.github/actions/setup-ssh@v1
+        uses: ajaxer-org/ssh-setup-action@latest
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           host: github.com
